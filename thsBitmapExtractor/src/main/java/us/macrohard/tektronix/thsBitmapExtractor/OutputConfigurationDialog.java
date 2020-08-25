@@ -47,9 +47,15 @@ public class OutputConfigurationDialog extends JDialog {
 		this.outputDirectoryTextField = new FileSelectionTextField(this.config.getString(EnumConfigurationKey.OUTPUT_DIRECTORY));
 		this.outputDirectoryTextField.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		this.fileNametextField = new JTextField(this.config.getString(EnumConfigurationKey.OUTPUT_FILE_NAME));
+		this.fileNametextField.setToolTipText("If a \'#\' character is present in the name, the program will save files as a series "
+				+ "starting at 0. The \'#\' will be replaced by the image series number.");
 		this.autoRepeatCheckBox = new JCheckBox("Auto Repeat");
+		this.autoRepeatCheckBox.setToolTipText("If selected, the program will resume listening automatically after a bitmap is "
+				+ "received from the device.");
 		this.autoRepeatCheckBox.setSelected(this.config.getBoolean(EnumConfigurationKey.AUTO_REPEAT_CAPTURE));
 		this.openAfterCaptureCheckBox = new JCheckBox("Auto Open");
+		this.openAfterCaptureCheckBox.setToolTipText("If selected, after receiving a valid bitmap, the received file will be "
+				+ "opened in the default program for the corresponding image type.");
 		this.openAfterCaptureCheckBox.setSelected(this.config.getBoolean(EnumConfigurationKey.OPEN_FILE_AFTER_CAPTURE));
 		this.okButton = new JButton("OK");
 		this.okButton.addActionListener(new ActionListener() {
